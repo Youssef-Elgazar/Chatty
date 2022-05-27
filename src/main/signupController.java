@@ -17,7 +17,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class signupController {
-<<<<<<< Updated upstream
+
   @FXML
   private Button Signup;
 
@@ -28,7 +28,7 @@ public class signupController {
     window.setScene(scene3);
     window.show();
   }
-=======
+
 
     PreparedStatement ps,ps1;
 
@@ -107,7 +107,7 @@ public class signupController {
         }
     }
 
->>>>>>> Stashed changes
+
 }
 
 

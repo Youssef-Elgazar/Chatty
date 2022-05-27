@@ -1,6 +1,5 @@
 package main;
-<<<<<<< Updated upstream
-=======
+
         import javafx.fxml.FXML;
         import javafx.fxml.FXMLLoader;
         import javafx.scene.Parent;
@@ -18,18 +17,9 @@ package main;
         import java.sql.PreparedStatement;
         import java.sql.ResultSet;
         import java.sql.SQLException;
->>>>>>> Stashed changes
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
-import java.io.IOException;
+
 
 public class LoginController {
 
@@ -46,18 +36,14 @@ public class LoginController {
   private Button login;
 
 
-  public void cancelButtononAction(ActionEvent event) {
-    Stage stage = (Stage) cancelButton.getScene().getWindow();
-    stage.close();
-  }
 
-<<<<<<< Updated upstream
-  public void login(ActionEvent event) {
-    System.out.println(usertxt.getText());
-    System.out.println(pass.getText());
 
-  }
-=======
+//  public void login(ActionEvent event) {
+//    System.out.println(usertxt.getText());
+//    System.out.println(pass.getText());
+//
+//  }
+
     public void cancelButtononAction(ActionEvent event){
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
@@ -70,20 +56,18 @@ public class LoginController {
             String username = usertxt.getText().trim();
             String password = pass.getText().trim();
 
-            if(username.isEmpty() || password.isEmpty()){
+            if (username.isEmpty() || password.isEmpty()) {
                 errorMsg.setText("Please insert username and password");
-            }
-            else
-            {
+            } else {
 
                 PreparedStatement ps = con.prepareStatement("select * from useraccounts where username=?"
                         + " and password=?");
 
-                ps.setString(1,usertxt.getText().trim() );
+                ps.setString(1, usertxt.getText().trim());
                 ps.setString(2, pass.getText().trim());
 
                 ResultSet rs = ps.executeQuery();
-                if(rs.next()){
+                if (rs.next()) {
                     FXMLLoader fmxlLoader = new FXMLLoader(getClass().getResource("/views/ChatView.fxml"));
                     Parent window = (Pane) fmxlLoader.load();
                     con2 = fmxlLoader.<ChatController>getController();
@@ -91,28 +75,26 @@ public class LoginController {
                     Thread x = new Thread(listener);
                     x.start();
                     this.scene = new Scene(window);
-                }
-
-                else {
+                } else {
                     errorMsg.setText("Invalid credentials. Please try again");
                 }
             }
-        }
-        catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println("error" + ex.toString());
         }
->>>>>>> Stashed changes
-
-  @FXML
-  private Button Signup;
-
-  public void signupOnAction(ActionEvent event) throws IOException {
-    Parent view3 = FXMLLoader.load(getClass().getResource("signup.fxml"));
-    Scene scene3 = new Scene(view3);
-    Stage window = new Stage();
-    window.setScene(scene3);
-    window.show();
-  }
 
 
-}
+        @FXML
+        private Button Signup;
+
+        public void signupOnAction (ActionEvent event) throws IOException {
+            Parent view3 = FXMLLoader.load(getClass().getResource("signup.fxml"));
+            Scene scene3 = new Scene(view3);
+            Stage window = new Stage();
+            window.setScene(scene3);
+            window.show();
+        }
+    }
+
+
+

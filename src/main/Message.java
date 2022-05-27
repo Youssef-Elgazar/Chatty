@@ -1,6 +1,6 @@
 package main;
 
 public class Message {
-	private User sender;
-	private String content;
+  private User sender;
+  private String content;
 }

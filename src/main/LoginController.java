@@ -1,41 +1,37 @@
 package main;
 
-        import javafx.fxml.FXML;
-        import javafx.fxml.FXMLLoader;
-        import javafx.scene.Parent;
-        import javafx.scene.Scene;
-        import javafx.scene.control.Button;
-        import javafx.scene.control.TextField;
-        import javafx.scene.layout.Pane;
-        import javafx.stage.Stage;
-        import javafx.event.ActionEvent;
-        import main.dbconnect;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import main.dbconnect;
 
-        import javax.swing.*;
-        import java.io.IOException;
-        import java.sql.Connection;
-        import java.sql.PreparedStatement;
-        import java.sql.ResultSet;
-        import java.sql.SQLException;
-
-
+import javax.swing.*;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 
 public class LoginController {
 
-  @FXML
-  private TextField usertxt;
+    @FXML
+    private TextField usertxt;
 
-  @FXML
-  private TextField pass;
+    @FXML
+    private TextField pass;
 
-  @FXML
-  private Button cancelButton;
+    @FXML
+    private Button cancelButton;
 
-  @FXML
-  private Button login;
-
-
+    @FXML
+    private Button login;
 
 
 //  public void login(ActionEvent event) {
@@ -44,10 +40,11 @@ public class LoginController {
 //
 //  }
 
-    public void cancelButtononAction(ActionEvent event){
+    public void cancelButtononAction(ActionEvent event) {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
+
     void login(ActionEvent event) throws IOException {
         dbconnect connect = new dbconnect();
         try {

@@ -18,19 +18,19 @@ import java.sql.ResultSet;
 
 public class signupController {
 
-  @FXML
-  private Button Signup;
+    @FXML
+    private Button Signup;
 
-  public void signupOnAction(ActionEvent event) throws IOException {
-    Parent view3 = FXMLLoader.load(getClass().getResource("signup.fxml"));
-    Scene scene3 = new Scene(view3);
-    Stage window = new Stage();
-    window.setScene(scene3);
-    window.show();
-  }
+    public void signupOnAction(ActionEvent event) throws IOException {
+        Parent view3 = FXMLLoader.load(getClass().getResource("signup.fxml"));
+        Scene scene3 = new Scene(view3);
+        Stage window = new Stage();
+        window.setScene(scene3);
+        window.show();
+    }
 
 
-    PreparedStatement ps,ps1;
+    PreparedStatement ps, ps1;
 
     @FXML
     private Button closeBtn;
@@ -45,8 +45,6 @@ public class signupController {
     private PasswordField passwordTxt;
 
 
-
-
     @FXML
     private Button createBtn;
 
@@ -58,7 +56,7 @@ public class signupController {
     void register(ActionEvent event) throws IOException {
         dbconnect connect = new dbconnect();
 
-        try{
+        try {
 
             Connection con = connect.getconnection();
 
@@ -66,26 +64,21 @@ public class signupController {
             String password = passwordTxt.getText().trim();
             String name = nameTxt.getText().trim();
 
-            if(username.isEmpty() || password.isEmpty() || name.isEmpty()){
+            if (username.isEmpty() || password.isEmpty() || name.isEmpty()) {
                 errorMessage.setText("Please complete all the fills");
-            }
-            else {
-                if (password.length()<6){
+            } else {
+                if (password.length() < 6) {
                     errorMessage.setText("Password is too weak, please choose atleast 6 characters");
-                }
-
-                else {
+                } else {
 
                     String sql = "select * from useraccounts where username = ?";
                     ps = con.prepareStatement(sql);
                     ps.setString(1, username);
 
                     ResultSet rs = ps.executeQuery();
-                    if(rs.next()){
+                    if (rs.next()) {
                         errorMessage.setText("Username already taken, please try another username");
-                    }
-
-                    else{
+                    } else {
 
                         String sql2 = "insert into useraccounts (username, password, name) values(?,?,?)";
                         ps = con.prepareStatement(sql2);
@@ -100,24 +93,13 @@ public class signupController {
                     }
                 }
             }
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             System.out.println("error" + e);
         }
     }
 
 
 }
-
-
-
-
-
-
-
-
-
 
 
 //    @FXML
